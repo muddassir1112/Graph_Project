@@ -21,32 +21,34 @@ const CovidMap = () => {
   }, []);
 
   return (
-    <div className="leaflet-map">
-      <h2>A React Leaflet map</h2>
-      <MapContainer
-        center={[20, 0]}
-        zoom={2}
-        style={{ height: "400px", width: "100%" }}
-      >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {countriesData.map((country, index) => (
-          <Marker
-            key={index}
-            position={[country.countryInfo.lat, country.countryInfo.long]}
-            icon={customIcon} // Use the custom icon
-          >
-            <Popup>
-              <div>
-                <h2>{country.country}</h2>
-                <p>Total Active Cases: {country.active}</p>
-                <p>Total Recovered: {country.recovered}</p>
-                <p>Total Deaths: {country.deaths}</p>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
-      </MapContainer>
-    </div>
+    <>
+      <div className="covid-map">
+        <h2 className="map-heading">A React Leaflet map</h2>
+        <MapContainer
+          center={[20, 0]}
+          zoom={2}
+          style={{ height: "400px", width: "100%" }}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          {countriesData.map((country, index) => (
+            <Marker
+              key={index}
+              position={[country.countryInfo.lat, country.countryInfo.long]}
+              icon={customIcon} // Use the custom icon
+            >
+              <Popup>
+                <div>
+                  <h2 className="country-name">{country.country}</h2>
+                  <p>Total Active Cases: {country.active}</p>
+                  <p>Total Recovered: {country.recovered}</p>
+                  <p>Total Deaths: {country.deaths}</p>
+                </div>
+              </Popup>
+            </Marker>
+          ))}
+        </MapContainer>
+      </div>
+    </>
   );
 };
 

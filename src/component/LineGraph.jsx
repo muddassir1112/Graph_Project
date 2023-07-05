@@ -48,8 +48,10 @@ const LineGraph = () => {
 
   return (
     <div className="line-graph">
-      <h2>Line graph shows the cases fluctuations</h2>
-      <Line data={chartData} />
+      <h2 className="graph-title">Line graph shows the cases fluctuations</h2>
+      <div className="chart-container">
+        <Line data={chartData} />
+      </div>
     </div>
   );
 };
